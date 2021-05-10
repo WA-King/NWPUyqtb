@@ -11,10 +11,11 @@
 
 # 自动定时运行脚本
 + 首先有一台服务器
-+ `crontab -e` 
++ 执行`crontab -e` 
 + 在最后添加`0 8 * * * python解释器的绝对路径 脚本的绝对路径` 
 
-  例如`0 8 * * * /usr/bin/python3 /home/ubuntu/scripts/yqtb/yqtb.py`
+  例如![image](https://user-images.githubusercontent.com/44970685/117689963-e1957a00-b1ec-11eb-9a2e-df1c83aea207.png)
+
   
   表示每天8点运行一次执行脚本的命令 
   
