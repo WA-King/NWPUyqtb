@@ -1,13 +1,23 @@
 import requests 
+import re
 session=requests.session()
 url="http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp"
 post_url="http://yqtb.nwpu.edu.cn/wx/ry/ry_util.jsp"
 login_url="https://uis.nwpu.edu.cn/cas/login"
+with open("config.json") as f:
+    from json import load
+    j=load(f)
+    # 学号
+    username=j['username']
+    # 密码
+    password=j['password']
+    # 姓名
+    name=j['name']
 login_data= {
     #学号
-    'username': '2018xxxxxx',
+    'username': username,
     #密码
-    'password': '123123',
+    'password': password,
     'currentMenu': '1',
     'execution': 'e1s1',
     "_eventId":"submit"
@@ -21,11 +31,21 @@ if "欢迎使用" in response.text:
     print("login successfully")
 else:
     print("login unsuccessfully")
+    exit(1)
+response=session.get("http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/index.jsp")
+response=session.get("http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp")
+pattern=r"url:'ry_util\.jsp\?sign=(.*).*'"
+res=re.findall(pattern, response.text)
+if len(res) == 0:
+    print("error in script, please contact to the author")
+    exit(1)
+post_url+="?sign="+res[0]
 params={
+    "hsjc": "1",
     "xasymt": "1",
     "actionType": "addRbxx",
     #学号
-    "userLoginId": "123123",
+    "userLoginId": username,
     "szcsbm": "1",
     "bdzt": "1",
     "szcsmc": "在学校",
@@ -36,7 +56,7 @@ params={
     "ycqksm": "",
     "userType": "2",
     #姓名
-    "userName": "瓜皮"
+    "userName": name
 }
 html=session.get(url)
 session.headers.update({'referer': 'http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp'})
