@@ -1,13 +1,10 @@
 # 加入个人信息
-填写学号和密码
 
+将`config-example.json`重命名为`config.json`，并向其中填写学号、密码、姓名。
 
-![image](https://user-images.githubusercontent.com/44970685/117688063-04269380-b1eb-11eb-9cce-14e6ff6f8bbc.png)
+![image](https://user-images.githubusercontent.com/39238310/147223459-8086e8d5-09a4-43d5-81cf-3814e78e1e6f.png)
 
-
-填写学号和姓名(中文)
-
-![image](https://user-images.githubusercontent.com/44970685/117688097-0daffb80-b1eb-11eb-898c-13fbbf9a7de3.png)
+之后运行`python3 yqtb.py`即可。
 
 此报文只适用于**在学校**，其余情况请通过浏览器手动抓取报文，替换对应的数据。
 # 自动定时运行脚本
