@@ -12,8 +12,8 @@
 + 执行`crontab -e` 
 + 在最后添加`0 8 * * * python解释器的绝对路径 脚本的绝对路径 config文件绝对路径` 
 
-  例如![image](https://gitee.com/liu-chengwen/pic-bed/raw/master/img/20211230184728.png)
+  例如![image](https://user-images.githubusercontent.com/44970685/147747587-f9c5e7b2-9e6b-4b6a-92c6-cb876b0d6322.png)
 
-  
+
   表示每天8点运行一次执行脚本的命令 
   
