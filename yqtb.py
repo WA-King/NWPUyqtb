@@ -1,10 +1,15 @@
 import requests 
 import re
+import sys
 session=requests.session()
 url="http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp"
 post_url="http://yqtb.nwpu.edu.cn/wx/ry/ry_util.jsp"
 login_url="https://uis.nwpu.edu.cn/cas/login"
-with open("config.json") as f:
+if len(sys.argv)<2:
+    path_config="config.json"
+else:
+    path_config=sys.argv[1]
+with open(path_config) as f:
     from json import load
     j=load(f)
     # 学号
