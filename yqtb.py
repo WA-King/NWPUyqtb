@@ -2,8 +2,8 @@ import requests
 import re
 import sys
 session=requests.session()
-url="http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp"
-post_url="http://yqtb.nwpu.edu.cn/wx/ry/ry_util.jsp"
+url="https://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp"
+post_url="https://yqtb.nwpu.edu.cn/wx/ry/ry_util.jsp"
 login_url="https://uis.nwpu.edu.cn/cas/login"
 if len(sys.argv)<2:
     path_config="config.json"
@@ -37,8 +37,8 @@ if "欢迎使用" in response.text:
 else:
     print("login unsuccessfully")
     exit(1)
-response=session.get("http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/index.jsp")
-response=session.get("http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp")
+response=session.get("https://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/index.jsp")
+response=session.get("https://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp")
 pattern=r"url:'ry_util\.jsp\?sign=(.*).*'"
 res=re.findall(pattern, response.text)
 if len(res) == 0:
@@ -64,6 +64,6 @@ params={
     "userName": name
 }
 html=session.get(url)
-session.headers.update({'referer': 'http://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp'})
+session.headers.update({'referer': 'https://yqtb.nwpu.edu.cn/wx/ry/jrsb.jsp'})
 html=session.post(post_url,data=params)
 print(html.text)
